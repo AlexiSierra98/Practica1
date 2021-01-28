@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Lista{% endblock titulo %}</title>
+</head>
+
+<body>
+{%block cuerpo%}
+    <h1>
+        Template De Listado
+    </h1>
+    <br>
+    <br>
+
+    <table border="3">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Correo</th>
+                <th>Opcion</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for persona in personas %}
+            <tr>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellido}}</td>
+                <td>{{persona.correo}}</td>
+                <td><a href=" {%url 'editar_persona' persona.id%} ">Editar</a> <a href=" {%url 'eliminar_persona' persona.id%} ">Eliminar</a></td>
+               
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="formulario"><button>Crear</button></a>
+{%endblock cuerpo%}
+</body>
+
+</html>
